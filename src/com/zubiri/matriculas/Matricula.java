@@ -24,6 +24,11 @@ public class Matricula extends Asignatura {
 	public double getPrecio() {
 		return precio;
 	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+    
 	
 	/**
 	 * Método que calcula un descuento basado en porcentaje sobre el precio original
@@ -34,8 +39,4 @@ public class Matricula extends Asignatura {
 		
 	}
 	
-	public void setPrecio(double precio) {
-		this.precio = precio;
-	}
-    
 }
