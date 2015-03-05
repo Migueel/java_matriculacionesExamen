@@ -1,42 +1,59 @@
 package com.zubiri.matriculas;
 
+import java.util.Scanner;
+
 public class Matricula extends Asignatura {
 	
-	int añoMatriculacion;
-    double precio;
+	private int anoPublicacion;
+    private double precio;
     
-	public String getAsignatura() {
-		return asignatura;
+    //constructor 1
+    public Matricula(Scanner sc){
+		super(sc);	
+		try {
+			System.out.println("Introduce el aÃ±o de publicacion de la matricula: ");
+			this.setAnoPublicacion(sc.nextInt());
+		} catch (Exception e) {
+			System.out.println("Introduce un aÃ±o valido.");
+		}
+		System.out.println("Introduce el precio de la matricula: ");
+		this.setPrecio(sc.nextDouble());	
 	}
-	
-	public void setAsignatura(String asignatura) {
-		this.asignatura = asignatura;
+    //constructor 2
+    public Matricula(String nombre, int creditos, Profesor profesor, int anoPublicacion, double precio){
+    	super(nombre, creditos, profesor);
+    	this.anoPublicacion = anoPublicacion;
+    	this.precio = precio;
+    }
+    
+    public int getAnoPublicacion() {
+		return anoPublicacion;
 	}
-	
-	public int getAñoMatriculacion() {
-		return añoMatriculacion;
+	public void setAnoPublicacion(int anoPublicacion) {
+		this.anoPublicacion = anoPublicacion;
 	}
-	
-	public void setAñoMatriculacion(int añoMatriculacion) {
-		this.añoMatriculacion = añoMatriculacion;
-	}
-	
 	public double getPrecio() {
 		return precio;
 	}
-
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
-    
-	
-	/**
-	 * Método que calcula un descuento basado en porcentaje sobre el precio original
-	 * de la matrícula.
-	 * @return
-	 */
+	/* metodo que calcula un descuento basado en porcentaje sobre el precio original
+	 * de la matricula.
+	  @return
+	  */
 	public double descuentoFamiliaNumerosa(int porcentaje) {
+		double descuento = (precio * porcentaje)/100;
 		
+		return descuento;
+			
+	}
+	public String formattedMatricula() {
+		String formattedMatricula = 
+				super.formattedAsignatura() +
+				"\nAÃ‘O DE PUBLICACION: " +this.getAnoPublicacion()
+				+"\nPRECIO: " +this.getPrecio();
+		return formattedMatricula;
 	}
 	
 }
